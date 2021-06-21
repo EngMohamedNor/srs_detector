@@ -3,9 +3,17 @@ const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const fs = require("fs");
+var sqlite3 = require("sqlite3").verbose();
+
 var mammoth = require("mammoth");
 var word2html = require("word-to-html");
 
+let db = new sqlite3.Database("./words.db", (err) => {
+  if (err) {
+    console.error(err.message);
+  }
+  console.log("Connected to the my database.");
+});
 const app = express();
 
 app.use(bodyParser.json());
@@ -72,4 +80,43 @@ app.post("/upload_document", (req, res) => {
     if (err) console.log(err);
     res.redirect("/analyse/?doc=" + document.name);
   });
+});
+
+app.get("/keywords", (req, res) => {
+  let words = [
+    "machine	",
+    "design",
+    "windows",
+    "model",
+    "source",
+    "application",
+    "control",
+    "state",
+    "action",
+    "cell",
+    "function",
+    "system",
+    "computer",
+    "software	",
+    "data",
+    "time",
+    "user",
+    "application",
+    "model",
+    "information",
+    "problem",
+    "function",
+    "language",
+    "algorithm",
+    "science	",
+    "university	",
+    "program	",
+    "set",
+    "use",
+    "method",
+    "research",
+    "device",
+  ];
+
+  res.send(words);
 });

@@ -1,0 +1,59 @@
+1. The OM system must be able to electronically record and store data which 
+can be uploaded to the system from remote devices
+ambiguities=system.data,device
+
+2. Items shall be stored on the machine and have complete fields.
+ambiguities =machine,fields.
+
+3. The OM’s system must provide the ability to accept digital signatures
+ambiguities =digital,system 
+
+4. Systems supporting OM must provide the ability to control the configuration of and revisions to investigation specific questionnaires
+ambiguities=configuration,Systems 
+
+5. New users should be able to register to the system.
+ambiguities=user,system
+
+6. The software is designed for the smart phone web, and standalone desktop PC. 
+ambiguities =software,smart phone
+
+7. The applicatin has a simple GUI and easy to use 
+ambiguities applicatin,GUI 
+
+8. Credentials of the user are encrypted through algorithm and application is accessible only to authenticated users
+ambiguities=algorithm,user,encrypted,authenticated
+
+9.The system generates reports on the following information.
+ambiguities=system,information. 
+
+10. It is assumed that one hundred IBM compatible computers will be available before the system is installed and tested
+ambiguities=computers, system 
+
+11.The system shall use the MySQL Database, which is open source and free.
+ambiguities=system,mysql,database,source
+
+12.The Development environment shall be Windows 2000
+ambiguities=enverment,windows
+
+14.The system shall be a Web-based application
+ambiguities=system,web,application
+
+15.Any modification (insert, delete, update) for the Database shall be synchronized and done only
+by the administrator.
+ambiguities=synchronized, Database
+
+16.Administrators shall be able to view and modify all information.
+ambiguities=administrators,view,modify,information
+
+17.The systems must conform to the Microsoft Accessibility guidelines
+ambiguities=systems,Microsoft.
+
+18. The system shall provide the capability to back-up the Data
+ambiguities=system.
+
+19. The system shall keep a log of all the errors.
+ambiguities=system,errors.
+
+20.Communication function require the internet protocol
+version 6 and it will follow HTTPS.
+ambiguities=function,internet,protocol,version.
