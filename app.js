@@ -83,8 +83,29 @@ app.post("/upload_document", (req, res) => {
 });
 
 app.get("/keywords", (req, res) => {
+  let wordData = [
+    {
+      keyword: "system",
+      synonyms: [
+        { domain: "CS", word: "Computer" },
+        { domain: "CS", word: "Router" },
+        { domain: "Health", word: "UltraSound" },
+        { domain: "Engineering", word: "Driller" },
+      ],
+    },
+    {
+      keyword: "design",
+      synonyms: [
+        { domain: "CS", word: "Graphic Design" },
+        { domain: "CS", word: "Web Design" },
+        { domain: "Health", word: "Xray Design" },
+        { domain: "Engineering", word: "Building Design" },
+      ],
+    },
+  ];
+
   let words = [
-    "machine	",
+    "machine",
     "design",
     "windows",
     "model",
@@ -118,5 +139,5 @@ app.get("/keywords", (req, res) => {
     "device",
   ];
 
-  res.send(words);
+  res.send(wordData);
 });

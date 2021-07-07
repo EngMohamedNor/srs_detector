@@ -89,6 +89,14 @@
             type: "GET",
             url: "/keywords",
             success: function (data) {
+                console.clear();
+                let words = [];
+
+                data.forEach(function (element) {
+
+                    words.push(element.keyword);
+                });
+
                 setTimeout(function () {
                     let progress = 90;
                     $('.progress-bar').css('width', progress + '%').attr('aria-valuenow', progress);
@@ -110,7 +118,9 @@
                     let doc = $("#data");
                     let count = 0;
                     var instance = new Mark(doc);
-                    var x = instance.mark(data, {
+
+                    console.log(words);
+                    var x = instance.mark(words, {
                         element: "span",
                         className: "highlight",
                         each: (ele) => {
