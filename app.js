@@ -73,12 +73,32 @@ app.post("/upload_document", (req, res) => {
   }
 
   let document = req.files.file;
+  let domain = req.body.domain;
+  let domain_decription = "";
 
+  switch (domain) {
+    case "mcee":
+      domain_decription = "Mechanical Engineering (MCEE)";
+      break;
+    case "cive":
+      domain_decription = "Civil Engineering (CIV)";
+      break;
+    case "biee":
+      domain_decription = "Biomedical Engineering (BIEE)";
+  }
+  console.log(domain);
   var filePath =
     require("path").join(".", "/") + "/public/documents/" + document.name;
   document.mv(filePath, function (err) {
     if (err) console.log(err);
-    res.redirect("/analyse/?doc=" + document.name);
+    res.redirect(
+      "/analyse/?doc=" +
+        document.name +
+        "&domain=" +
+        domain +
+        "&domain_desc=" +
+        domain_decription
+    );
   });
 });
 
@@ -87,10 +107,42 @@ app.get("/keywords", (req, res) => {
     {
       keyword: "system",
       synonyms: [
-        { domain: "CS", word: "Computer" },
-        { domain: "CS", word: "Router" },
-        { domain: "Health", word: "UltraSound" },
-        { domain: "Engineering", word: "Driller" },
+        {
+          domain: "mcee",
+          words: [
+            "network",
+            "design",
+            "software",
+            "development",
+            "database",
+            "program",
+          ],
+        },
+        {
+          domain: "cive",
+          words: [
+            "power",
+            "area",
+            "control",
+            "ventilation",
+            "consumption",
+            "software",
+            "program",
+          ],
+        },
+        {
+          domain: "biee",
+          words: [
+            "neuroscience",
+            "time",
+            "neuron",
+            "activity",
+            "cell",
+            " brain",
+            "rate",
+            "program",
+          ],
+        },
       ],
     },
     {
@@ -139,5 +191,9 @@ app.get("/keywords", (req, res) => {
     "device",
   ];
 
-  res.send(wordData);
+  let data = fs.readFileSync("data.json");
+  let json = JSON.parse(data);
+
+  console.log(json);
+  res.send(json);
 });

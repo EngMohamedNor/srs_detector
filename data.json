@@ -1,0 +1,185 @@
+[
+  {
+    "Word": "Machine",
+    "mcee": "tool,Milling Machine,PUMP,device,Lathe Machine,robot,computer,device",
+    "cive": "computers,device,construction machine,task,category,hazard,robot,",
+    "biee": "analyzer,Anesthesia machine,Centrifuge,ultrasound,diagnostics,robot,computers,device"
+  },
+  {
+    "Word": "Design",
+    "mcee": " network,analysis,program,architecture ,shape style,",
+    "cive": " analysis,program,architecture standardization,construction,standard,guideline,fabrication,equipment",
+    "biee": "architecture,shape,style,outline,planedition,issue,communication,access,activity"
+  },
+  {
+    "Word": "Windows",
+    "mcee": "file,folder,linux,driver  opening,aperture",
+    "cive": "curtain,pit,clothes,fireplace,tile,opening,hole",
+    "biee": "aortic window,Therapeutic window,plateform,opening"
+  },
+  {
+    "Word": "Model ",
+    "mcee": "method,data,analysis,simulation,prediction,design",
+    "cive": "mechanicm,law,matter,thermodynamics,construction design",
+    "biee": "theory,simulation,prediction,idea,method"
+  },
+  {
+    "Word": "Source ",
+    "mcee": "tool,,specification,available,document",
+    "cive": "cooling,earth,noise,generator,application,available",
+    "biee": "library,available,free,document"
+  },
+  {
+    "Word": "Application ",
+    "mcee": "development,database,software,tool,architecture,source",
+    "cive": "apparatus,duct,leakage,refrigerant,combustion,software,tool",
+    "biee": "interface,sofware,machine,program"
+  },
+  {
+    "Word": "Control ",
+    "mcee": " source,database,interface,storage,requirement,power,switching",
+    "cive": "ventilation,rating,consumption,supply,electricity",
+    "biee": "database,access,support,allow,counter,authority,ointment"
+  },
+  {
+    "Word": "State",
+    "mcee": "class,algorithm,automaton,domain,model,country",
+    "cive": "class,algorithm,country,legal",
+    "biee": "activity,rate,neuron,image,country,policy"
+  },
+  {
+    "Word": "Action",
+    "mcee": "operation,decision,configuration,object,pattern,channel,movement,position",
+    "cive": "decision,configuration,object,pattern,channel",
+    "biee": "neuron,anatomy,shape,image,flow,membrane,effect"
+  },
+  {
+    "Word": "Cell",
+    "mcee": "electrolysis,value,rank,error,size,input ",
+    "cive": "panel,value,rank,error,size,input ,prison,room",
+    "biee": "chemical,brain,stem,neuro science,image,DNA,tissue,blood"
+  },
+  {
+    "Word": "Function",
+    "mcee": "case,operator,parameter,array,variable,integer,input,define",
+    "cive": "program,operator,building,principle,arithmatic",
+    "biee": "anatomy,momentum,equation,condition,cell,coordinate"
+  },
+  {
+    "Word": "System",
+    "mcee": "network,design,software,\r\ndevelopment,database,program",
+    "cive": "power,area,control,ventilation,consumption,software,program",
+    "biee": "neuroscience,time,neuron,activity,,cell,brain,rate,program,system"
+  },
+  {
+    "Word": "Computer",
+    "mcee": "gears,levers ,pc,screen,artificial,television,laptop,HP,mac,navigator,robots",
+    "cive": "device,construction,laptop,HP,mac,robots",
+    "biee": "laboratory,digital,instructions,pc,laptop,access,devices "
+  },
+  {
+    "Word": "Software",
+    "mcee": "MATLAB,application,development,database,software,tool,architecture,app,web,",
+    "cive": "application,apparatus,duct,refrigerant,combustion,application,tool,app,web,",
+    "biee": "interface,application,machine,program,diagnostic,therapeutic,CRM,EHR "
+  },
+  {
+    "Word": "Data",
+    "mcee": "information,database,register,access,storage",
+    "cive": "facts,report,information,register",
+    "biee": "analysis,patients,information,Disease,trials "
+  },
+  {
+    "Word": "Time",
+    "mcee": "period,moment,actual,",
+    "cive": "force,period,moment,actual,",
+    "biee": "appointment,period,moment,actual,"
+  },
+  {
+    "Word": "User",
+    "mcee": "Automation engineer,Research and development,engineer,Instrumentation engineer,customer,driver,passenger",
+    "cive": "visitor ,costumer,register,developer,persons,organisations,tenant,owner",
+    "biee": "patients,physicians,doctor,nurse,Practitioner,therapists,social workers"
+  },
+  {
+    "Word": "Information",
+    "mcee": "data,details,info,resource,integer,input,evidence,model,\r\naddress",
+    "cive": "data,file,integer,input,name,block\r\ndefine",
+    "biee": "website,physical form,electronic form,history,condition,treatment,diagnosis "
+  },
+  {
+    "Word": "Problem",
+    "mcee": "question,dificults,error,mistake",
+    "cive": "issue,scenario,error",
+    "biee": "worry,illness,diabetes,hypertension,syndrome"
+  },
+  {
+    "Word": "Language",
+    "mcee": "programming,expressions,compiler,algorithm",
+    "cive": "formal,programming,symbols,dialect,style,methodology",
+    "biee": "terminology,programming,rules,discipline,procedure,principles "
+  },
+  {
+    "Word": "Algorithm",
+    "mcee": "science,well-defined,encryption",
+    "cive": "mathematics,well-defined,expresion,method",
+    "biee": "instruction,implementation,principle"
+  },
+  {
+    "Word": "Science",
+    "mcee": "engineering,design,mechanical systems",
+    "cive": "art,modeling,engineeing,mathematics",
+    "biee": "laboratory,chemestry,theoretical,philosophy,psychology "
+  },
+  {
+    "Word": "Universal",
+    "mcee": "computation,dynamical,public,system,principle",
+    "cive": "tasks,public,system,principle",
+    "biee": "blood,concept,truths,"
+  },
+  {
+    "Word": "Program",
+    "mcee": "project,interface,software,tool,application,source",
+    "cive": "process,module,tool,software,application",
+    "biee": "software,facility,job,mession,application,project"
+  },
+  {
+    "Word": "Digital",
+    "mcee": "signal,electronic,anolog,data,information",
+    "cive": "cable,data,anolog,electronic,information",
+    "biee": "artery,information,record,telemedicine,telehealth "
+  },
+  {
+    "Word": "Report",
+    "mcee": "mechanical report,statement,summery,information,",
+    "cive": "observation,inquiry,construction industry,project stages,details ",
+    "biee": "medical report,finding,examination,announcement,clinical data"
+  },
+  {
+    "Word": "Method",
+    "mcee": "operation,technigue,methodology,approach,principle,",
+    "cive": "methodology,equation,calculation,Construction methods ,rules",
+    "biee": "procedure,mode,discipline,systematic "
+  },
+  {
+    "Word": "Tool",
+    "mcee": "engine,motor,device,equipment,software",
+    "cive": "device,hammers,appliance,drill,shovel,program",
+    "biee": "device,equipment,machine,machine,sofware"
+  },
+  {
+    "Word": "Research",
+    "mcee": "experimentation,analysis,test,discovery ",
+    "cive": "development,experimentation,analysis,knowledge,engineering,materials ",
+    "biee": "Medical research,laboratry,clinical,science,experimentation"
+  },
+  {
+    "Word": "Device",
+    "mcee": "monitor,airbag,electricity,machine,smart-phone,mobile,laptop,Driller",
+    "cive": "hardware,pump,chiller,motor,conditioner,hardware,machine,smart-phone,mobile,laptop,Driller",
+    "biee": "diagnostics,monitor,access,machine,equipment,smart-phone,mobile,laptop"
+  },
+  {
+    "Word": "…….."
+  }
+]

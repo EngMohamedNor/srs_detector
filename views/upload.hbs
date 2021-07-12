@@ -4,13 +4,23 @@
 <br>
 <center style="border: 3px; border-style: solid; border-color:#4BB777; padding:30px; width:50%; margin:auto;">
     <form action="/upload_document" method="POST" enctype="multipart/form-data">
+        <p class="lead fw-bold" style="text-align: left !important;">Upload Document</p>
         <div class="row">
-            <div class="col-md-6">
-                <p class="lead fw-bold" style="text-align: left !important;">Upload Document</p>
+            <div class="col-md-4">
+
                 <input type="file" class="form-control" name="file" required>
             </div>
-            <div class="col-md-2"><br><br>
-                <button style="margin-top: 5px;" type="submit" class="btn btn-success">Upload</button>
+            <div class="col-md-4">
+
+                <select class="form-control" name="domain">
+                    <option value="" required="">..Select Domain..</option>
+                    <option value="mcee">Mechanical Engineering (MCEE)</option>
+                    <option value="cive">Civil Engineering (CIVE)</option>
+                    <option value="biee">Biomedical Engineering (BIEE)</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button style="margin-top: 0px;" type="submit" class="btn btn-success">Upload</button>
             </div>
         </div>
     </form>

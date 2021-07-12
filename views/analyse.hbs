@@ -2,6 +2,9 @@
 
 <center>
     <h2>Analysis Result</h2>
+    <center>
+        <h4> Domain <span style="font-weight: bold;" id="domain_desc"></span></h4>
+    </center>
     <br>
     <table style="width:30%;">
         <tr>
@@ -11,8 +14,9 @@
             <td style="padding:3px;border:2px solid rgb(212, 212, 212)" id="counter">
                 0
             </td>
-            <td style="padding:3px;border:2px solid rgb(212, 212, 212);display:none">
-                &nbsp;&nbsp; <button style="margin-top: 5px;" type="submit" class="btn btn-success">Save
+            <td style="padding:3px;border:2px solid rgb(212, 212, 212);display:x">
+                &nbsp;&nbsp; <button style="margin-top: 5px;" onclick="save()" type="submit"
+                    class="btn btn-success">Save
                     Document</button>
             </td>
         </tr>
@@ -38,27 +42,26 @@
 
 
 <script>
-    let keywords = ["system", "dolor"];
+    let keywords = [];
+    let domain = "";
+    let doc = null;
+    let domain_description = "";
     document.addEventListener("DOMContentLoaded", function (event) {
 
 
-        process();
-        Tipped.create(".simple-tooltip");
+        doc = new jsPDF({
 
-        Tipped.create(
-            "#32",
-            function (element) {
-                let id = 8321;
-                element.id = id;
-                return {
-                    title: $(element).data("title"),
-                    content: `<a href='#' onclick='change_word(${id},"new Thing")'> Other Word </a> <br>  <a href='#'> Synynom 2 </a>`,
-                };
-            },
-            {
-                skin: "light",
-            }
-        );
+        });
+
+
+
+        domain = getParameterByName('domain');
+        domain_description = getParameterByName('domain_desc');
+        $("#domain_desc").text(domain_description);
+        process();
+
+
+
     });
     function process() {
 
@@ -79,6 +82,7 @@
         sub_prog();
 
 
+
         setTimeout(function () {
             let progress = 30;
             $('.progress-bar').css('width', progress + '%').attr('aria-valuenow', progress);
@@ -89,12 +93,13 @@
             type: "GET",
             url: "/keywords",
             success: function (data) {
+                keywords = data;
                 console.clear();
                 let words = [];
 
                 data.forEach(function (element) {
 
-                    words.push(element.keyword);
+                    words.push(element.Word);
                 });
 
                 setTimeout(function () {
@@ -120,17 +125,46 @@
                     var instance = new Mark(doc);
 
                     console.log(words);
+                    let id = 1;
+
                     var x = instance.mark(words, {
                         element: "span",
                         className: "highlight",
                         each: (ele) => {
                             count = count + 1;
+                            ele.id = id;
+                            id++;
+
                         }
+
                     });
+
+                    Tipped.create(
+                        ".highlight",
+                        function (element) {
+
+
+                            return {
+                                title: $(element).data("title"),
+                                content: get_content(element)
+                            };
+                        },
+                        {
+                            skin: "light",
+                        }
+                    );
+
+
+
 
                     $("#counter").html("<b>" + count + "</b> Words")
 
                 }, 2200);
+
+
+
+
+
 
             },
             error: function (error) {
@@ -140,9 +174,95 @@
 
 
     }
+    function getValue(obj, name) {
+        console.clear();
 
+        var val = '';
+        Object.keys(obj).forEach(e => {
+            console.log(e);
+            if (e == name) {
+                val = obj[e];
+                return false;
+            }
+
+        });
+
+
+        return val;
+    };
+    function get_content(element) {
+        console.clear();
+        let text = element.innerHTML.toLowerCase();
+
+        // var filtered = keywords.filter((i) => i.keyword == text)[0];
+        //  let synonyms = filtered.synonyms;
+        // var domain_filtered = synonyms.filter((i) => i.domain == domain)[0];
+        //  console.log(domain_filtered)
+
+        var filtered = keywords.filter((i) => i.Word.toLowerCase() == text)[0];
+        console.clear();
+        console.log(filtered)
+
+        let related_synonyms = getValue(filtered, domain.toLowerCase());
+
+        let _options = `<center style='font-size:13pt;font-weight:bold'>${domain_description} <br>domain synonyms </center><ul class="">`;
+        //for (const s of domain_filtered.words) {
+
+        var sn = related_synonyms.split(',');
+
+        for (var i = 0; i < sn.length; i++) {
+            let s = sn[i];
+            try {
+                if (s.trim().length < 3) {
+                    continue;
+                }
+            } catch (e) { }
+            _options = _options + `<li onclick='change_word(${element.id},"${s}")'>${s}</li>`;
+        }
+
+        // }
+
+
+
+
+        _options = _options + "</ul>";
+        console.log(_options)
+
+        return _options;
+    }
+    function get_synonyms(word) {
+        return word + " has 123";
+    }
     function change_word(element, new_word) {
         $("#" + element).text(new_word);
+    }
+
+
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+
+    function save() {
+        let content = $('#data').text();
+        var blob = new Blob([content], {
+            type: "text/plain;charset=utf-8"
+        });
+
+        saveAs(blob, "processed_doc_" + domain_description + " domain_.txt");
+        return;
+
+        doc.fromHTML($('#data').html(), 15, 15, {
+            'width': 170,
+
+        });
+        doc.save('doc.pdf');
+
     }
 </script>
 
@@ -168,10 +288,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
+    integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"
     integrity="sha512-19TrqSGVSwaC2IDGHrD+tAkX59/w5cXy0BHDVwn7OJQXxavORhFSFM7DOO9soXKuo8O7gGNHiG9R2vFrXRBcTQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="./tipped.js"></script>
+<script src="../public/tipped.js"></script>
 
-<link rel="stylesheet" href="./node_modules/@staaky/tipped/dist/css/tipped.css" />
+<link rel="stylesheet" href="../public/tipped.css" />
+
+
+
+<style>
+    li {
+        padding: 5px !important;
+        font-size: 13pt !important;
+        border-bottom: 1px solid rgb(241, 241, 241) !important;
+        cursor: pointer;
+
+    }
+</style>
